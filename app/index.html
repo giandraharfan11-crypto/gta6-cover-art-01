@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ViceFrame Studio — Cover Art Maker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">VF</span>
+      <div class="brand-text">
+        <h1>ViceFrame <em>Studio</em></h1>
+        <p>Neon-noir cover art, composed in your browser. No uploads, no servers — pure canvas.</p>
+      </div>
+    </div>
+    <div class="top-actions">
+      <label class="size-label" for="sizeSelect">Export size</label>
+      <select id="sizeSelect">
+        <option value="1080x1080" selected>Square · 1080 × 1080</option>
+        <option value="1080x1350">Portrait · 1080 × 1350</option>
+        <option value="1920x1080">Wide · 1920 × 1080</option>
+      </select>
+      <button id="downloadBtn" class="primary" type="button">Download PNG</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="stage-wrap">
+      <div id="stageBox" class="stage-box">
+        <canvas id="stage" width="1080" height="1080"></canvas>
+        <div id="dropVeil" class="drop-veil">Drop a photo to frame it</div>
+      </div>
+      <p class="hint">Click a panel to select it · drag the photo inside it to reposition · scroll to zoom</p>
+    </section>
+
+    <aside class="panel">
+      <section class="group">
+        <h2>Photo</h2>
+        <div class="row">
+          <button id="uploadBtn" type="button">Upload photo…</button>
+          <label class="check"><input type="checkbox" id="sharedToggle" checked> One photo fills all panels</label>
+        </div>
+        <div id="thumbs" class="thumbs"></div>
+        <div class="row">
+          <span class="mini-label">Panel</span>
+          <div id="panelChips" class="chips"></div>
+        </div>
+        <div class="row slider-row">
+          <label for="zoomSlider">Zoom</label>
+          <input type="range" id="zoomSlider" min="1" max="3" step="0.01" value="1">
+        </div>
+      </section>
+
+      <section class="group">
+        <h2>Layout</h2>
+        <div id="layoutBtns" class="chips wrap"></div>
+      </section>
+
+      <section class="group">
+        <h2>Colour grade</h2>
+        <div id="gradeBtns" class="chips wrap"></div>
+      </section>
+
+      <section class="group">
+        <h2>Lettering</h2>
+        <label class="field">Masthead
+          <input type="text" id="titleInput" value="VICEFRAME" maxlength="24" spellcheck="false">
+        </label>
+        <label class="field">Caption line
+          <input type="text" id="captionInput" value="NEON HEAT ON THE BOULEVARD" maxlength="48" spellcheck="false">
+        </label>
+      </section>
+
+      <p class="foot">Exports render offscreen at the exact pixel size. Photo → finished PNG in three clicks: pick, frame, download.</p>
+    </aside>
+  </main>
+</div>
+
+<input type="file" id="fileInput" accept="image/*" hidden>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
